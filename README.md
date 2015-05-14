@@ -20,6 +20,13 @@ var connection = new Khmerload.SharedWebSocket({
 
 ##### Documentation
 
+|  | Description |
+| --------- |------------|
+| receive | Trigger when message is received from server.  |
+| open | Trigger when connection is ready. |
+| close | Tirgger when connection is closed. |
+| master | Trigger when the current tab has promoted to master. Master refers to tab that hold WebSocket connection. Its job is distributing the message to other tab. |
+
 ##### Architecture
 *(Need to work more on description)*
 
