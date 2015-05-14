@@ -28,7 +28,15 @@ var connection = new Khmerload.SharedWebSocket({
 | master | Trigger when the current tab has promoted to master. Master refers to tab that hold WebSocket connection. Its job is distributing the message to other tab. |
 
 ##### Architecture
-*(Need to work more on description)*
+How does it work?
+* When new tab is opened, SharedWebSocket creates an unique ID for it.
+* If master tab (tab that holds WebSocket connection) is active
+  * Become a master, create a WebSocket connection
+  * Distribute message to children tab
+* Else
+  * Listen for message from master 
 
 ##### Milestone
-*(Need to work more on description)*
+* Add more demo on how to use SharedWebSocket
+* Test for browser support
+* Fallbak to more WebSocket connection if browser does not support localStorage
