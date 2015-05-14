@@ -6,14 +6,19 @@ Instead of creating new WebSocket for each tab, SharedWebSocket allows us to use
 
 ##### Example
 
-```
+```html
+<script src="SharedWebSocket.js"></script>
+<script>
 var connection = new Khmerload.SharedWebSocket({
-  url: "ws://127.0.0.1:8888",
-  receive: function(message) {
-     console.log(message);
-  }
+    url: "ws://127.0.0.1:8888",
+    receive: function(message) {
+       console.log(message);
+    }
 });
+</script>
 ```
+
+##### Documentation
 
 ##### Architecture
 *(Need to work more on description)*
