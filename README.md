@@ -32,9 +32,9 @@ How does it work?
 * When new tab is opened, SharedWebSocket creates an unique ID for it.
 * If master tab (tab that holds WebSocket connection) is active
   * Become a master, create a WebSocket connection
-  * Distribute message to children tab
+  * Distribute message to children tab via localStorage
 * Else
-  * Listen for message from master 
+  * Listen for message from master via localStorage
 
 ##### Milestone
 * Add more demo on how to use SharedWebSocket
