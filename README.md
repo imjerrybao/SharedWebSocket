@@ -39,4 +39,5 @@ How does it work?
 ##### Milestone
 * Add more demo on how to use SharedWebSocket
 * Test for browser support
+* Implement SharedWebSocket using Web Worker if the browser supports.
 * Fallbak to more WebSocket connection if browser does not support localStorage
