@@ -1,6 +1,8 @@
 # SharedWebSocket
-Pooling WebSocket connection across multiple web browser tabs.
-*(Need to work more on description)*
+
+![SharedWebSocket](http://oi62.tinypic.com/5vbrma.jpg)
+
+Instead of creating new WebSocket for each tab, SharedWebSocket allows us to use one connection for multiple tabs.
 
 ##### Example
 
