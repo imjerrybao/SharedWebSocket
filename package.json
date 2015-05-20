@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"shelljs" : "latest"
+	},
+	
+	"scripts": {
+		"build": "npm install && node build/build.js"
+	}
+}
