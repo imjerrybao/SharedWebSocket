@@ -122,27 +122,23 @@ Khmerload.SharedWebSocket = function(obj) {
 		function makeConnection()
 		{
 			// Create a web socket connection
-			webSocketConnection = new WebSocket(obj.url);
-			
-			// Listen when we have successfully connected
-			webSocketConnection.onopen = function() {
-				broadcast("OPEN");
-				if (typeof obj.open == "function") obj.open();
-			};
-
-			// Listen for incoming message and forward message to other child.
-			webSocketConnection.onmessage = function(evt) {
-				// Forward the message to other child
-				broadcast("MSG " + evt.data);
-				if (typeof obj.receive == "function") obj.receive(evt.data);
-			};
-			
-			// When the web socket got disconnected, try to reconnect again
-			webSocketConnection.onclose = function() {
-				broadcast("CLOSE");
-				if (typeof obj.close == "function") obj.close();
-				setTimeout(makeConnection, 5000);
-			}
+			webSocketConnection = new Khmerload.NativeWebSocket({
+				url: obj.url,
+				open: function() {
+					broadcast("OPEN");
+					if (typeof obj.open == "function") obj.open();
+				},
+				message: function(msg) {
+					// Forward the message to other child
+					broadcast("MSG " + msg);
+					if (typeof obj.message == "function") obj.message(msg);
+				},
+				close: function() {
+					broadcast("CLOSE");
+					if (typeof obj.close == "function") obj.close();
+				},
+				reconnect: obj.reconnect
+			});
 		}
 		
 		function broadcast(message)
@@ -194,7 +190,7 @@ Khmerload.SharedWebSocket = function(obj) {
 				console.log(command);
 			
 				if (command === "FWD") {
-					if (typeof obj.receive == "function") obj.receive(e.newValue);
+					if (typeof obj.message == "function") obj.message(e.newValue);
 				} else if (command === "SEND") {
 					if (isMaster) {
 						webSocketConnection.send(message);

@@ -1,7 +1,7 @@
-var _fs = require('fs');
 var shell = require('shelljs');
 
 function uglify(srcPath, distPath) {
+	var _fs = require('fs');
     var jsp = require('uglify-js').parser;
     var pro = require('uglify-js').uglify;
     var ast = jsp.parse( _fs.readFileSync(srcPath).toString() );
@@ -15,6 +15,7 @@ function uglify(srcPath, distPath) {
 shell.mkdir('dist');
 shell.cat([
 	'src/SharedWebSocket.js',
+	'src/NativeWebSocket.js',
 	'src/ReconnectStrategy.js',
 ]).to('dist/websocket.js');
 

@@ -1,7 +1,7 @@
 {
 	"dependencies": {
 		"shelljs" : "latest",
-		"uglify-js" : "latest"
+		"uglify-js" : "1"
 	},
 	
 	"scripts": {
